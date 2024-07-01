@@ -1,0 +1,86 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+<style>
+    /* Custom CSS for Truck Registration page */
+#gtco-reservation {
+    padding-top: 100px; /* Adjust as needed for spacing */
+    padding-bottom: 100px; /* Adjust as needed for spacing */
+}
+
+.section-content {
+    border-radius: 10px;
+}
+
+.table {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    text-align: center;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2;
+}
+
+.heading-section .subheading {
+    font-size: 16px;
+    color: #007bff;
+}
+
+.heading-section h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Additional CSS to display 4 products in a row */
+.card {
+    width: calc(25% - 20px); /* 25% width for each card with some margin */
+    margin-right: 20px;
+    margin-bottom: 20px;
+    float: left;
+}
+
+.card:last-child {
+    margin-right: 0; /* Remove margin for the last card in a row */
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+}
+</style>
+
+<section class="contact-section section-padding" id="section_6">
+    <div class="container">
+<h2 class="text-center mb-4">View Product</h2>
+
+        <div class="row">
+            {% for i in result %}
+            <div class="card">
+                <img src="media/{{i.image}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{ i.name }}</h5>
+                 Quantity: {{ i.quantity }}<br>
+                 Price:{{ i.price }}
+                
+                  <p class="card-text">{{ i.description }}</p>
+                  <a href="add_to_cart/{{i.id}}" class="btn btn-primary">Add To Cart</a>
+                </div>
+              </div>
+              {% endfor %}
+
+
+        </div>
+    </div>
+</section>
+{% include 'footer.html' %}
+
+
+{% endblock %}

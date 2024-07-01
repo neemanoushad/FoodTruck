@@ -1,0 +1,252 @@
+{% load static %}
+
+{% block content %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Food Truck</title>
+
+        <!-- CSS FILES -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;400;700&display=swap" rel="stylesheet">
+                
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+        <link href="{% static 'css/bootstrap-icons.css' %}" rel="stylesheet">
+
+        <link href="{% static 'css/templatemo-festava-live.css' %}" rel="stylesheet">
+        
+<!--
+
+TemplateMo 583 Festava Live
+
+https://templatemo.com/tm-583-festava-live
+
+-->
+    </head>
+    
+    <body>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <main>
+
+            <header class="site-header">
+                <div class="container">
+                    <div class="row">
+                        
+                        <div class="col-lg-12 col-12 d-flex flex-wrap">
+                            <p class="d-flex me-4 mb-0">
+                                <i class="bi-person custom-icon me-2"></i>
+                                <strong class="text-dark">Welcome to Food Truck</strong>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">
+                       
+                    </a>
+
+                    <a href="ticket.html" class="btn custom-btn d-lg-none ms-auto me-4">Buy Ticket</a>
+    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+
+
+                    {% if request.session.admin %}
+                    <!-- Bootstrap CSS -->
+
+            <ul class="navbar-nav d-flex justify-content-left" style="background-color: #d1c130;">
+                <div class="d-flex flex-lg-row flex-column">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="http://127.0.0.1:8000/index">Home</a>
+                    </li>
+                   
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         View
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="http://127.0.0.1:8000/viewuser">View User</a>
+                          <a class="dropdown-item" href="http://127.0.0.1:8000/viewtruck">View Truck</a>
+                          <a class="dropdown-item" href="http://127.0.0.1:8000/viewcharity">View Charity</a>
+                          <a class="dropdown-item" href="http://127.0.0.1:8000/viewfood">View Food</a>
+                          <a class="dropdown-item" href="http://127.0.0.1:8000/viewreqfood">View Requested Food</a>
+                          <a class="dropdown-item" href="http://127.0.0.1:8000/truckstatus">View Truck Status</a>
+                          <a class="dropdown-item" href="http://127.0.0.1:8000/viewproduct">View  Product</a>
+                          <a class="dropdown-item" href="http://127.0.0.1:8000/viewuserrewards">View User Rewards</a>
+
+                          <a class="dropdown-item" href="http://127.0.0.1:8000/vieworders_admin">View Orders</a>
+                          <a class="dropdown-item" href="http://127.0.0.1:8000/view_feedbacks">View Feedback</a>
+                          <a class="dropdown-item" href="http://127.0.0.1:8000/view_complaint">View Complaint</a>
+
+                        </div>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/category">Add Category</a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/product">Add Product</a>
+                    </li>
+                 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="http://127.0.0.1:8000/logout">Logout</a>
+                    </li>
+                </div>
+                
+            </ul>
+            {% elif request.session.uid %}
+            <ul class="navbar-nav d-flex justify-content-between"  style="background-color: #d1c130;">
+                <div class="d-flex flex-lg-row flex-column">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="http://127.0.0.1:8000/index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/userprofile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/food">Add Food</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/viewproduct_user">View Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/view_cart">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/viewreward">View Rewards</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/allocated_charity">Allocated Charity</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/vieworders">View Orders</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="http://127.0.0.1:8000/logout">Logout</a>
+                    </li>
+                </div>
+                
+            </ul>
+            {% elif request.session.tid %}
+            <ul class="navbar-nav d-flex justify-content-between" style="background-color: #d1c130;">
+                <div class="d-flex flex-lg-row flex-column">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="http://127.0.0.1:8000/index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/truckprofile">Truck Profile</a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/viewrequest">View Request</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/vieworders_truck">View Delivery Status</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="http://127.0.0.1:8000/logout">Logout</a>
+                    </li>
+                </div>
+                
+            </ul>
+            {% elif request.session.cid %}
+            <ul class="navbar-nav d-flex justify-content-between" style="background-color: #d1c130;">
+                <div class="d-flex flex-lg-row flex-column">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="http://127.0.0.1:8000/index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/charityprofile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/viewfood_charity">View Food</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/vieworders_charity">View Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/viewallocatedtruck">Allocated Truck</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/addfeed">Add Feedback  </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/addcomplaint">Add Complaint  </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/view_complaint_charity">View Complaint  </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="http://127.0.0.1:8000/logout">Logout</a>
+                    </li>
+                </div>
+                
+            </ul>
+            {% else %}
+
+            <div class="collapse navbar-collapse" id="navbarNav" style="background-color: #d3bb35;">
+                <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5">
+                    <li class="nav-item">
+                        <a  class="nav-link" href="http://127.0.0.1:8000/index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="http://127.0.0.1:8000/reg" class="nav-link">User Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a  class="nav-link" href="http://127.0.0.1:8000/charity">Charity Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a  class="nav-link" href="http://127.0.0.1:8000/truck">Truck Register</a>
+                    </li>
+
+              
+                </ul>
+
+                <a href="http://127.0.0.1:8000/login" class="btn custom-btn d-lg-block d-none">Login</a>
+            </div>
+
+
+
+
+
+
+           
+            {% endif %}
+    
+                    
+
+
+
+
+                </div>
+            </nav>
+            {% endblock %}

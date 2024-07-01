@@ -1,0 +1,114 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+<style>
+    /* Custom CSS for Truck Registration page */
+body {
+    background-image: url("{% static 'images/b.png' %}");
+    background-size: cover;
+    background-position: center;
+}
+
+#gtco-reservation {
+    padding-top: 100px; /* Adjust as needed for spacing */
+    padding-bottom: 100px; /* Adjust as needed for spacing */
+}
+
+.section-content {
+    border-radius: 10px;
+}
+
+.table {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    text-align: center;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2;
+}
+
+.heading-section .subheading {
+    font-size: 16px;
+    color: #007bff;
+}
+
+.heading-section h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+}
+
+</style>
+
+<section class="contact-section section-padding" id="section_6">
+    <div >
+        <div class="row">
+
+            <div >
+                <h2 class="text-center mb-4">View Charity</h2>
+
+             
+
+                <div class="tab-content shadow-lg mt-5" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-ContactForm" role="tabpanel" aria-labelledby="nav-ContactForm-tab">
+
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Charity Name</th>
+                                        <th>Charity License No.</th>
+                                        <th>Member</th>
+                                        <th>Address</th>
+                                        <th>Phone</th>
+                                        <th>Email</th>
+                                        <th> Password</th>
+                                        <th> Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in result %}
+                                    <tr>
+                                        <td>{{ i.cname }}</td>
+                                        <td>{{ i.c_license_no }}</td>
+                                        <td>{{ i.member }}</td>
+                                        <td>{{ i.address }}</td>
+                                        <td>{{ i.phone }}</td>
+                                        <td>{{ i.email }}</td>
+                                        <td>{{ i.password }}</td>
+                                        {% if i.status == 'pending'%}
+                                        <td><a href="charityaccept/{{i.id}}">Accept</a><br>
+                                             <a href="charityreject/{{i.id}}">Reject</a></td>
+                                  
+                                               {% else %}
+                                     
+                                     <td>{{i.status}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-ContactMap" role="tabpanel" aria-labelledby="nav-ContactMap-tab">
+                        <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29974.469402870927!2d120.94861466021855!3d14.106066818082482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd777b1ab54c8f%3A0x6ecc514451ce2be8!2sTagaytay%2C%20Cavite%2C%20Philippines!5e1!3m2!1sen!2smy!4v1670344209509!5m2!1sen!2smy" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <!-- You can easily copy the embed code from Google Maps -> Share -> Embed a map // -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% include 'footer.html' %}
+
+
+{% endblock %}

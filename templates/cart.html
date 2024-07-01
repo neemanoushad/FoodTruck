@@ -1,0 +1,114 @@
+{% block content %}
+
+
+{% include 'header.html' %}
+<br><br><br><br><br>
+<style>
+    /* Custom CSS for Truck Registration page */
+#gtco-reservation {
+    padding-top: 100px; /* Adjust as needed for spacing */
+    padding-bottom: 100px; /* Adjust as needed for spacing */
+}
+
+.section-content {
+    border-radius: 10px;
+}
+
+.table {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    text-align: center;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2;
+}
+
+.heading-section .subheading {
+    font-size: 16px;
+    color: #007bff;
+}
+
+.heading-section h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+}
+
+</style>
+
+   <!-- Menu Start -->
+   <div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h5 class="section-title ff-secondary text-center text-primary fw-normal">Cart</h5>
+            <h1 class="mb-5">My Cart</h1>
+        </div>
+        <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
+           
+            <div class="tab-content">
+                <div id="tab-1" class="tab-pane fade show p-0 active">
+                    <div class="row g-12">
+                
+                        {% for item in subtotal_per_product %}
+                        <div class="col-lg-12" style="border: 1px solid rgb(255, 220, 156); padding: 20px;">
+                            <div class="d-flex align-items-center">
+                                <img class="flex-shrink-0 img-fluid rounded" src="media/{{ item.product.image }}" alt="" style="width: 80px;">
+                                <div class="w-100 d-flex flex-column text-start ps-4">
+                                    <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                        <span>{{ item.product.name }}</span>
+                                     
+                                        <span class="text-primary">₹{{ item.product.price }}</span>
+                                    </h5>
+                                    <p><b>Product Price:</b> {{ item.product.price }}</p>
+                                    <p><b>Product Description:</b> {{ item.product.description }}</p>
+                                    <p><b>Quantity:</b> {{ item.quantity }}</p>
+                                    <form action="addquantity/{{ item.item_id }}" method="post">
+                                        {% csrf_token %}
+                                        <input type="number" style="width: 150px; border-radius: 20px;" min="1" max="{{item.product.quantity}}" name="quantity" placeholder="Change Quantity">
+                                        <input type="submit" style="background-color: orange; border-radius: 20px;" value="ok" >
+                                    </form>
+                                </div>
+                               
+                                    <a href="remove_cart_item/{{item.item_id}}" class="btn btn-primary">
+                                        <i > Remove</i>
+                                    </a>
+                               
+                            </div>
+                        </div>
+                        {% endfor %}
+                
+                        <div style="border:2px solid orange;padding: 10px;">
+                            <h4 align="left">Total Items: {{ total_items }}</h4>
+                            <h4 align="right">Sub Total: ₹{{ total_price }}</h4>
+                        </div>
+                
+                        
+                
+                    </div><br>
+                    {% if total_items %}
+                    <div align="right">
+                        <a  href="{% url 'buy_all' %}?total_items={{ total_items }}&total_price={{ total_price }}{% for item in cart_item_details %}{% if item.name and item.quantity %}&cart_item_{{ forloop.counter0 }}_name={{ item.name }}&cart_item_{{ forloop.counter0 }}_quantity={{ item.quantity }}{% endif %}{% if not forloop.last %}&{% endif %}{% endfor %}" class="btn btn-primary">Checkout</a>
+                    </div>
+                    {% endif %}
+                   
+                </div>
+                
+                
+               
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Menu End -->
+
+
+{% include 'footer.html' %}
+
+{% endblock %}

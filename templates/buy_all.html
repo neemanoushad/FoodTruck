@@ -1,0 +1,86 @@
+
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+
+
+<section class="contact-section section-padding" id="section_6">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="">
+                    <div>
+                        <h6>Total Items: {{ total_items }}</h6>
+                        <h6>Total Price: ₹{{ total_price }}</h6>
+                    </div>
+                
+                    <div style="padding: 30px;">
+                        <h6>Cart Item Details:</h6>
+                        <ul>
+                            {% for item in cart_item_details %}
+                                <li>{{ item.name }} - Quantity: {{ item.quantity }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-12 mx-auto">
+                <h2 class="text-center mb-4">Purchase your Products</h2>
+
+             
+
+                <div class="tab-content shadow-lg mt-5" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-ContactForm" role="tabpanel" aria-labelledby="nav-ContactForm-tab">
+
+                           
+                        <form  class="custom-form contact-form mb-5 mb-lg-0" method="post" name="contact-us" action="purchase" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="contact-form-body">
+                               
+                                    <div class="col-lg-12 col-md-6 col-12">
+                                        <textarea readonly required class="form-control" placeholder="Products Name" name="product" style="height: 100px">{{ product_names|join:', ' }}</textarea>
+                                        
+                                    </div>
+                                    <div class="col-lg-12 col-md-6 col-12">
+                                    <input type="text" hidden class="form-control" id="" name="total_item" value="{{ total_items }}" placeholder="Product Type">
+                                </div>
+                                <div class="col-lg-12 col-md-6 col-12">
+                                    <label for="">Amout to pay after the deduction of reward point </label>
+                                <input type="text"  class="form-control" id="" name="sub_total" value="{{ sub_total }}" placeholder="Flavor">
+                                <input type="hidden"  class="form-control" id="" name="total_price" value="{{ total_price }}" placeholder="Flavor">
+                            </div>
+
+{% if sub_total != 0 %}
+                            <div class="col-lg-12 col-md-6 col-12">
+                                <input type="text" required class="form-control" id="" name="card_name" placeholder="Card Name">
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-12">
+                                <input type="text" required class="form-control" id=""  pattern="[0-9]{16}" title="Enter 16 Digits" name="card_number" placeholder="Card Number ">
+                        </div>
+
+
+                        <div class="col-lg-12 col-md-6 col-12">
+                            <input type="text" required class="form-control" pattern="[0-9]{3}" title="Enter 3 Digits" id="" name="cvv" placeholder="Card CVV ">
+                        </div>
+                        {% endif %}
+
+                                <div class="col-lg-4 col-md-10 col-8 mx-auto">
+                                    <button type="submit" class="form-control">Buy Now</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-ContactMap" role="tabpanel" aria-labelledby="nav-ContactMap-tab">
+                        <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29974.469402870927!2d120.94861466021855!3d14.106066818082482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd777b1ab54c8f%3A0x6ecc514451ce2be8!2sTagaytay%2C%20Cavite%2C%20Philippines!5e1!3m2!1sen!2smy!4v1670344209509!5m2!1sen!2smy" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <!-- You can easily copy the embed code from Google Maps -> Share -> Embed a map // -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% include 'footer.html' %}
+
+{% endblock %}

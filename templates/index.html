@@ -1,0 +1,172 @@
+{% block content %}
+{% load static %}
+
+{% include 'header.html' %}
+<style>
+    /* Center modal vertically */
+    .modal-dialog {
+      display: flex;
+      align-items: center;
+      min-height: calc(100% - (1.75rem * 2)); /* Account for modal padding */
+    }
+  </style>
+{% if message %}
+<script>
+    alert('{{ message }}');
+</script>
+{% endif %}
+{% if product %}
+<script>
+    alert('{{ product }}');
+</script>
+{% endif %}
+{% if assign %}
+<script>
+    alert('{{ assign }}');
+</script>
+{% endif %}
+{% if category %}
+<script>
+    alert('{{ category }}');
+</script>
+{% endif %}
+{% if msg4 %}
+<script>
+    alert('{{ msg4 }}');
+</script>
+{% endif %}
+{% if delivery %}
+<script>
+    alert('{{ delivery }}');
+</script>
+{% endif %}
+{% if truck %}
+<script>
+    alert('{{ truck }}');
+</script>
+{% endif %}
+{% if message1 %}
+<script>
+    alert('{{ message1 }}');
+</script>
+{% endif %}
+{% if message2 %}
+<script>
+    alert('{{ message2 }}');
+</script>
+{% endif %}
+{% if msg %}
+<script>
+    alert('{{ msg }}');
+</script>
+{% endif %}
+{% if cat %}
+<script>
+    alert('{{ cat }}');
+</script>
+{% endif %}
+
+{% if message3 %}
+<script>
+  $(document).ready(function() {
+    $('#popupModal').modal('show');
+  });
+</script>
+{% endif %}
+
+            <section class="hero-section" id="section_1">
+                <div class="section-overlay"></div>
+
+                <div class="container d-flex justify-content-center align-items-center">
+                    <div class="row">
+
+                        <div class="col-12 mt-auto mb-5 text-center">
+                            <small>Food Truck Presents</small>
+
+                            <h1 class="text-white mb-5">Charity 2023</h1>
+
+                            <a class="btn custom-btn smoothscroll" href="#section_2">Let's begin</a>
+                        </div>
+
+                        <div class="col-lg-12 col-12 mt-auto d-flex flex-column flex-lg-row text-center">
+                            <div class="date-wrap">
+                                <h5 class="text-white">
+                                    <i class="custom-icon bi-clock me-2"></i>
+                                    10 - 12<sup>th</sup>, Dec 2023
+                                </h5>
+                            </div>
+
+                            <div class="location-wrap mx-auto py-3 py-lg-0">
+                                <h5 class="text-white">
+                                    <i class="custom-icon bi-geo-alt me-2"></i>
+                                    Kerala
+                                </h5>
+                            </div>
+
+                            <div class="social-share">
+                                <ul class="social-icon d-flex align-items-center justify-content-center">
+                                    <span class="text-white me-3">Share:</span>
+
+                                    <li class="social-icon-item">
+                                        <a href="#" class="social-icon-link">
+                                            <span class="bi-facebook"></span>
+                                        </a>
+                                    </li>
+
+                                    <li class="social-icon-item">
+                                        <a href="#" class="social-icon-link">
+                                            <span class="bi-twitter"></span>
+                                        </a>
+                                    </li>
+
+                                    <li class="social-icon-item">
+                                        <a href="#" class="social-icon-link">
+                                            <span class="bi-instagram"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-wrap">
+                    <video autoplay="" loop="" muted="" class="custom-video" poster="">
+                        <source src="{% static 'video/promo.mp4' %}" type="video/mp4">
+
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </section>
+
+
+          
+
+           
+
+           
+
+          
+        </main>
+
+        <div class="modal-dialog modal-dialog-centered" role="document"></div>
+        <div class="modal fade" id="popupModal" tabindex="-1" role="dialog" aria-labelledby="popupModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="popupModalLabel">Message</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p style="color: red;"><b>{{ message3 }}</b></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% include 'footer.html' %}
+
+        {% endblock %}
+       
